@@ -23,7 +23,7 @@ $resultado = $conexao->query($consulta);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="Index.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>Street Store</title>
 </head>
@@ -55,7 +55,7 @@ $resultado = $conexao->query($consulta);
         <section class="produtos">
             <?php
 
-            $select = $conn->prepare("SELECT * FROM produtos");
+            $select = $conexao->prepare("SELECT * FROM produtos");
             $select->execute();
 
             // Obter o resultado da consulta

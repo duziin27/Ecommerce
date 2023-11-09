@@ -14,6 +14,26 @@ if ($conexao->connect_error) {
 
 $consulta = "SELECT Id_produto, Nome_produto, Preco, Quantidade_estoque FROM produtos";
 $resultado = $conexao->query($consulta);
+
+if(isset($_GET['id'])){
+    $Id = $_GET['id'];
+    $consulta = "SELECT * FROM produtos WHERE Id_produto = $Id";
+    $produto = $conexao->query($consulta);
+    $resultado = $produto->fetch_assoc();
+    $Nome_produto = $resultado['Nome_produto'];
+    $Id_produto = $resultado['Id_produto'];
+    $Preco = $resultado['Preco'];
+    $Quantidade = 1;
+    $Genero = $resultado['Genero'];
+    $Descricao = $resultado['Descricao'];
+    $Estado = "Adicionado";
+    $Usuario = $_SESSION['usuarioId'];
+    $data = date('Y-m-d');
+    $adicionar_carrinho = "INSERT INTO carrinho(id, Nome_produto, Id_cadastro, Id_produto, Quantidade, Preco, Descricao, Data_compra, Genero, Estado) VALUES ( '', '$Nome_produto', '$Usuario', '$Id_produto', '$Quantidade', '$Preco','$Descricao', '$data', '$Genero', '$Estado')";
+    $add = $conexao->query($adicionar_carrinho);
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,7 +50,7 @@ $resultado = $conexao->query($consulta);
 
     <nav>
         <div class="nav_logout">
-            <a href="../Cadastro E Login/logout.php">Log-out</a>|
+            <a href="../logout.php">Log-out</a>|
             <p> Olá,
                 <?php echo $_SESSION['usuario']; ?>!
             </p>
@@ -38,7 +58,7 @@ $resultado = $conexao->query($consulta);
         <div class="nav_logo">
             <h1>Street Store</h1>
         </div>
-        <div class="nav_market">
+        <div class="nav_carrinho">
             <a class="btheader" href="../Carrinho/Carrinho.php">
                 <img src="../Imagens/Carrinho.png" alt="" width="40px">
             </a>
@@ -55,37 +75,37 @@ $resultado = $conexao->query($consulta);
 
         <section class="produtos">
             <?php
-
-            $select = $conexao->prepare("SELECT * FROM produtos");
-            $select->execute();
-
-            // Obter o resultado da consulta
-            $result = $select->get_result();
-
-            // Verificar se a consulta retornou resultados
-            if ($result->num_rows > 0) {
-                // Loop através dos resultados e exibir os produtos
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='produtos'>";
-                    echo "<div class='produto'>";
-                    echo "<img src='img/" . $row["Id_produto"] . ".JPG' alt='" . $row["Nome_produto"] . "'>";
-                    echo "<div class='produto-detalhes'>";
-                    echo "<h2>" . $row["Nome_produto"] . "</h2>";
-                    echo "<h2> R$ " . $row["Preco"] . ",00 </h2>";
-                    echo "<p>" . $row["Descricao"] . "</p>";
-                    echo "<p>Estoque: " . $row["Quantidade_estoque"] . "</p>";
-                    echo '<button class="add_cart" type="submit" value="add_cart" name=" style="margin: 0;" data-product-id="' . $row["Id_produto"] . 'data-product-name="' . $row["Nome_produto"] . 'data-product-quantity="' . $row["Quantidade_estoque"] . 'data-product-genero="' . $row["Genero"] . '" data-product-description="' . $row["Descricao"] . '" data-product-price="' . $row["Preco"] . '"><b>Adicionar ao carrinho</b> <i class="bx bxs-cart"></i> </button>';
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-            } else {
-                echo "Nenhum produto encontrado no banco de dados.";
-            }
-
-            // Fechar a conexão com o banco de dados
-            $conexao->close();
+             $select = $conexao->prepare("SELECT * FROM produtos");
+             $select->execute();
+ 
+             // Obter o resultado da consulta
+             $result = $select->get_result();
             ?>
+
+
+
+            <?php foreach ($result as $lista) : ?>
+
+                <div class="produtos">
+                    <div class="produto">
+                        <div class="top">
+                            <img class="icone" src="../" alt="">
+                        </div>
+                        <img src="../Produtos/img/<?= $lista['Id_produto'] ?>.JPG">
+                        <p class="ptxt"><?= $lista['Nome_produto'] ?></p>
+                        <p class="ptxt"><?= $lista['Descricao'] ?></p>
+                        <div class="valores">
+                            <p><?= $lista['Preco'] ?></p>
+                            <p>Disponivel <span><?= $lista['Quantidade_estoque'] ?></span> Unidades</p>
+                        </div>
+                        <a class="botao" href="?id=<?= $lista["Id_produto"] ?>"><span>Comprar</span></a>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+
+                
+          
         </section>
 
         <footer>

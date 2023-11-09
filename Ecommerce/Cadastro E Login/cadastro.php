@@ -1,7 +1,6 @@
 <?php
 require_once('../Mysql.php');
 
-// Conexão com o banco de dados
 $conexao = Mysql::conexao();
 if ($conexao->connect_error) {
     die("A conexão falhou: " . $conexao->connect_error);
@@ -16,12 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $genero = $_POST["Genero"];
     $cidade = $_POST["Cidade"];
     $estado = $_POST["Estado"];
-
-    $conexao = new mysqli("localhost", "root", "", "ecommerce");
-
-    if ($conexao->connect_error) {
-        die("A conexão falhou: " . $conexao->connect_error);
-    }
 
     $sql_cadastro = "INSERT INTO clientes (Nome_cliente, Sobrenome, Email, Senha, Nascimento, CPF, Genero, Cidade, Estado) VALUES('$nome', '$sobrenome', '$email', '$senha', '$nascimento' ,'$cpf', '$genero' ,'$cidade', '$estado')";
     $conexao->query($sql_cadastro);
@@ -80,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <div class="form-group">
                 <label for="pwd">Digite sua senha:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Digite sua senha" name="Senha"
+                <input type="password" class="form-control" id="pwd" placeholder="Digite sua senha" name="Senha" minlength="6"
                     required>
             </div>
 
@@ -97,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <div class="form-group">
                 <label for="cpf">CPF:</label>
-                <input class="form-control" type="number" id="cpf" name="CPF" autocomplete="off" required>
+                <input class="form-control" type="number" id="cpf" name="CPF" autocomplete="off" minlength="11" maxlength="11" required>
             </div>
 
             <div class="form-group">

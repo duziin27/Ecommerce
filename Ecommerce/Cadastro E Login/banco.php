@@ -52,12 +52,12 @@ $tabelacarrinho = "CREATE TABLE carrinho (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Id_cadastro INT NOT NULL,
     Id_produto INT NOT NULL,
-    quantidade INT NOT NULL,
-    total DECIMAL(10, 2) NOT NULL,
-    descricao TEXT NOT NULL,
-    data_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (Id_cadastro) REFERENCES clientes(Id_cadastro),
-    FOREIGN KEY (Id_produto) REFERENCES produtos(Id_produto)
+    Quantidade INT NOT NULL,
+    Preco DECIMAL(10, 2) NOT NULL,
+    Descricao TEXT NOT NULL,
+    Data_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Genero VARCHAR(50) NOT NULL,
+    Estado VARCHAR(50) NOT NULL
 )";
 
 if($consulta = $conexao->query($tabelacarrinho)){
