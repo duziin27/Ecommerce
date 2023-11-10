@@ -45,6 +45,10 @@ button:hover {
     background-color: #5d1280;
 }
 
-.falha {
-    background-color: red;
+.mensagem-erro {
+    border: 2px solid #ff0000; 
+    background-color: #f5eeff; 
+    color: #ff0000; 
+    padding: 15px; 
+    
 }

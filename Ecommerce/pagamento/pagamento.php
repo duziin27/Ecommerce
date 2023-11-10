@@ -12,6 +12,7 @@ if(isset($_GET['finalizar'])){
     $id = $_GET['finalizar'];
     $consulta = "UPDATE carrinho SET Estado = 'Finalizado' WHERE Id_cadastro = $id";
     $resultado = $conexao->query($consulta);
+    header("Location: ../Produtos/Produtos.php");
 };
 
 ?>
@@ -22,12 +23,12 @@ if(isset($_GET['finalizar'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pagamento.css">
 </head>
 <body>
     <header>
         <nav>
-            <h1 class="nomeLoja">Street Store</h1>
+            <h1 class="nomeLoja">Obrigado por comprar na Street Store!</h1>
         </nav>
     </header>
 
@@ -90,8 +91,8 @@ if(isset($_GET['finalizar'])){
                 <label for="cvv">CVV:</label>
                 <input type="text" id="cvv" name="cvv" placeholder="***" minlength="3" maxlength="3">
             </div>
-            
-            <a href="?finalizar=<?=$_SESSION['usuario']?>">Finalizar Pagamento</a>
+        
+            <button class="btn-pagamento"><a href="?finalizar=<?= $_SESSION['usuarioId'] ?>"><font color=white>Finalizar Compra<font></button>
         </section>
     
     </main>

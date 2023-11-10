@@ -50,6 +50,7 @@ if($consultasql = $conexao->query($tabprodutos)){
 /*
 $tabelacarrinho = "CREATE TABLE carrinho (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome_produto VARCHAR(255)
     Id_cadastro INT NOT NULL,
     Id_produto INT NOT NULL,
     Quantidade INT NOT NULL,

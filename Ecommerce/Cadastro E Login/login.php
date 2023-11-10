@@ -33,11 +33,13 @@ if (isset($_POST['Email']) || isset($_POST['Senha'])) {
                 $_SESSION["usuarioId"] = $cliente["Id_cadastro"];
 
                 header("Location: ../Produtos/Produtos.php");
+                exit();
+            } else {
+                echo '<p class="mensagem-erro">Falha ao logar! Senha incorreta</p>';
+
             }
         } else {
-            echo "Falha ao logar! E-mail ou senha incorretos";
-
-
+            echo '<p class="mensagem-erro">Falha ao logar! E-mail incorreto</p>';
         }
     }
 }

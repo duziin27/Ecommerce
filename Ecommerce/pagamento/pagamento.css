@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+
+  background: linear-gradient(135deg, #150029, #66007a);
+}
+
+header {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.nomeLoja {
+  font-size: 24px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+p {
+  word-break: break-all;
+}
+
+section {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.pag {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.entrega {
+  margin-bottom: 20px;
+}
+
+.entrega p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.PagamentoPix {
+  margin-bottom: 20px;
+}
+
+.PagamentoPix img {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.PagamentoPix p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.PagamentoPix strong {
+  font-weight: bold;
+}
+
+.PagamentoCartao {
+  margin-bottom: 20px;
+}
+
+.PagamentoCartao h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-pagamento {
+  background-color: #66007a;
+  color: #fff;
+  border-top: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  width: 100%;
+  border-radius: 5px;
+
+}
+
+.btn-pagamento:hover {
+  background-color: #150029;
+  border-radius: 5px;
+}
+
+.PagamentoPix button#copiarBotao {
+  background-color: #66007a;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}

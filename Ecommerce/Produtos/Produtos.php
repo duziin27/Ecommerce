@@ -71,7 +71,7 @@ if(isset($_GET['id'])){
             <li><a href="#">Produtos</a></li>
             <li><a href="#">Sobre Nós</a></li>
         </ul>
-        </nav>
+        
 
         <section class="produtos">
             <?php
@@ -92,13 +92,14 @@ if(isset($_GET['id'])){
                             <img class="icone" src="../" alt="">
                         </div>
                         <img src="../Produtos/img/<?= $lista['Id_produto'] ?>.JPG">
-                        <p class="ptxt"><?= $lista['Nome_produto'] ?></p>
+                        <p class="ptxt"><b><?= $lista['Nome_produto'] ?></b></p>
                         <p class="ptxt"><?= $lista['Descricao'] ?></p>
                         <div class="valores">
-                            <p><?= $lista['Preco'] ?></p>
-                            <p>Disponivel <span><?= $lista['Quantidade_estoque'] ?></span> Unidades</p>
+                            <p><b>R$<?= $lista['Preco'] ?>,00</b></p>
+                            <p><span><?= $lista['Quantidade_estoque'] ?></span> unidades disponiveis</p>
                         </div>
-                        <a class="botao" href="?id=<?= $lista["Id_produto"] ?>"><span>Comprar</span></a>
+                        <br>
+                        <a class="comprar" href="?id=<?= $lista["Id_produto"] ?>"><span>Adicionar ao carrinho</span></a>
                     </div>
                 </div>
 
